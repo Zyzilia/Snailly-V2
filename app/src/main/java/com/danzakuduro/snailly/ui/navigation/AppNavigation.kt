@@ -20,7 +20,7 @@ fun AppNavigation() {
     val navController = rememberNavController()
     var startUrl = remember { mutableStateOf("https://www.google.com/search?q=&safe=active") }
 
-    NavHost(navController = navController, startDestination = "register") {
+    NavHost(navController = navController, startDestination = "login") {
         composable("login") {
             LoginScreen(
                 onNavigateToRegister = { 

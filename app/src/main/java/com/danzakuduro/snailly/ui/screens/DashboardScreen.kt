@@ -19,6 +19,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.danzakuduro.snailly.data.HistoryItem
+import com.danzakuduro.snailly.ui.components.BackgroundDecoration
+import com.danzakuduro.snailly.ui.components.SnaillyButton
 import com.danzakuduro.snailly.supabase
 import com.danzakuduro.snailly.ui.theme.*
 import io.github.jan.supabase.auth.auth
@@ -170,7 +172,7 @@ fun DashboardScreen(
                 border = BoxDefaults.transparentBorder() // Simulated
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    DashboardButton(
+                    SnaillyButton(
                         text = "Mulai Menjelajah Aman",
                         containerColor = BrightBlue,
                         contentColor = White,
@@ -179,7 +181,7 @@ fun DashboardScreen(
 
                     Spacer(modifier = Modifier.height(12.dp))
 
-                    DashboardButton(
+                    SnaillyButton(
                         text = "Pusat Jelajah (Discovery Hub)",
                         containerColor = White,
                         contentColor = DarkGreen,
@@ -197,22 +199,6 @@ fun DashboardScreen(
                 textAlign = TextAlign.Center
             )
         }
-    }
-}
-
-@Composable
-fun BackgroundDecoration() {
-    Canvas(modifier = Modifier.fillMaxSize()) {
-        drawCircle(
-            color = White.copy(alpha = 0.05f),
-            radius = 400f,
-            center = androidx.compose.ui.geometry.Offset(size.width * 0.9f, size.height * 0.1f)
-        )
-        drawCircle(
-            color = White.copy(alpha = 0.03f),
-            radius = 600f,
-            center = androidx.compose.ui.geometry.Offset(size.width * 0.1f, size.height * 0.9f)
-        )
     }
 }
 
@@ -247,26 +233,6 @@ fun StatCard(title: String, value: String, valueColor: Color, modifier: Modifier
                 color = valueColor
             )
         }
-    }
-}
-
-@Composable
-fun DashboardButton(
-    text: String,
-    containerColor: Color,
-    contentColor: Color,
-    onClick: () -> Unit
-) {
-    Button(
-        onClick = onClick,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(60.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = containerColor),
-        shape = RoundedCornerShape(16.dp),
-        elevation = ButtonDefaults.buttonElevation(defaultElevation = 4.dp)
-    ) {
-        Text(text = text, fontSize = 16.sp, fontWeight = FontWeight.Bold, color = contentColor)
     }
 }
 
